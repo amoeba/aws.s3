@@ -72,7 +72,7 @@ function(file,
     headers <- c(list(`x-amz-acl` = acl), headers)
     if (isTRUE(multipart)) {
         if (is.character(file) && file.exists(file)) {
-            file <- readBin(file, what = "raw")
+            file <- readBin(file, raw(), file.size(file))
         }
         size <- length(file)
         partsize <- 1e8 # 100 MB
